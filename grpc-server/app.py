@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify # type: ignore
 from utilities import fetch_news_links, fetch_new_item
 
 app = Flask(__name__)
@@ -17,10 +17,7 @@ def scrape():
     if not url:
         return jsonify({'error': 'Missing URL parameter'}), 400
     result = fetch_new_item(url)
-    if isinstance(result, list):
-        return jsonify(result)
-    else:
-        return jsonify({'error': result}), 500
+    return jsonify(result)
 
 if __name__ == '__main__':
     app.run(debug=True)
