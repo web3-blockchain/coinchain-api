@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package database;
+
+option go_package = "github.com/yourusername/yourprojectname/proto;database";
+
+service DatabaseService {
+  rpc CreateTables (CreateTablesRequest) returns (CreateTablesResponse) {}
+}
+
+message CreateTablesRequest {
+  // リクエストパラメータは必要に応じてここに定義
+}
+
+message CreateTablesResponse {
+  bool success = 1;
+  string message = 2;
+}
