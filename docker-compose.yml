@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+  grpc-server:
+    build: ./grpc-server
+    ports:
+      - "50051:50051"
+    volumes:
+      - ./grpc-server:/app
+    depends_on:
+      - db
+
+  go-batch:
+    build: ./go-batch
+    depends_on:
+      - grpc-server
+
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: username
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mydb
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

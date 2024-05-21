@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package news;
+
+option go_package = "path/to/your/proto;news";
+
+service NewsService {
+  rpc FetchNews (NewsRequest) returns (NewsResponse);
+}
+
+message NewsRequest {}
+
+message NewsResponse {
+  repeated NewsItem news_items = 1;
+}
+
+message NewsItem {
+  string text = 1;
+  string url = 2;
+}
