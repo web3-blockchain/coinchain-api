@@ -1,18 +1,9 @@
 version: '3.8'
 services:
-  grpc-server:
-    build: ./grpc-server
-    ports:
-      - "50051:50051"
-    volumes:
-      - ./grpc-server:/app
-    depends_on:
-      - db
-
   go-batch:
     build: ./go-batch
     depends_on:
-      - grpc-server
+      - db
 
   db:
     image: postgres:13
