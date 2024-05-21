@@ -7,7 +7,7 @@ import (
 	"log"
 	"time"
 
-	pb "./news.proto" // Replace with the actual path
+	pb "go-batch/path/to/your/proto"
 
 	_ "github.com/lib/pq"
 	"google.golang.org/grpc"
@@ -41,7 +41,7 @@ func main() {
 	}
 	defer db.Close()
 
-	ticker := time.NewTicker(10 * time.Minute)
+	ticker := time.NewTicker(1 * time.Minute)
 	for ; true; <-ticker.C {
 		ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 		defer cancel()

@@ -1,5 +1,6 @@
 # go-batch/Dockerfile
 FROM golang:1.16-alpine
+ENV GOPROXY=https://proxy.golang.org,direct
 
 WORKDIR /app
 
